@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 95929492721608790}
   m_Layer: 0
   m_Name: GoldDoor
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 95051833145678734}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466572178990212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.27, y: -1.25, z: 0}
+  m_LocalPosition: {x: 2.27, y: -1.25, z: -6.08}
   m_LocalScale: {x: 0.39000002, y: 0.074999996, z: 4.2}
   m_Children:
   - {fileID: 4611961475635094}
@@ -204,7 +204,7 @@ Animator:
   m_GameObject: {fileID: 1466572178990212}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1ae8b78c220bdc94aba29448e432952f, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

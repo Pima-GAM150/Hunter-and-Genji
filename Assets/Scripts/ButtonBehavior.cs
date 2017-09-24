@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonBehavior : MonoBehaviour {
 
-    public GameObject DoorToOpen;
+    public Animator DoorToOpen;
     public float Timer = 7;
     private float TimerDefault;
     private bool switched = false;
@@ -22,6 +22,7 @@ public class ButtonBehavior : MonoBehaviour {
             Timer = TimerDefault;//reset to the preset value
             switched = false;
             GetComponent<Animator>().SetBool("Reset",true);
+            if (DoorToOpen.tag == "Pressure") DoorToOpen.SetBool("Sesame", false);
         }
 	}
 
@@ -31,6 +32,14 @@ public class ButtonBehavior : MonoBehaviour {
             //Debug.Log("Squished");
             GetComponent<Animator>().SetTrigger("Squishy");
             switched = true;
+            switch (DoorToOpen.tag) {
+                case "Button":DoorToOpen.SetTrigger("Sesame");break;
+                case "Pressure":DoorToOpen.SetBool("Sesame", true);break;
+                case "Key":DoorToOpen.SetTrigger("Sesame");break;
+                default:Debug.Log("Dunno what type of door this is. Set a tag");break;
+            }
+
+
         }
     }
 }
