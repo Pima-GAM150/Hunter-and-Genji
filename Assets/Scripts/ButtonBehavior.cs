@@ -23,6 +23,7 @@ public class ButtonBehavior : MonoBehaviour {
             switched = false;
             GetComponent<Animator>().SetBool("Reset",true);
             if (DoorToOpen.tag == "Pressure") DoorToOpen.SetBool("Sesame", false);
+            else if (DoorToOpen.tag == "Flame") DoorToOpen.SetBool("Flames", true);
         }
 	}
 
@@ -36,6 +37,7 @@ public class ButtonBehavior : MonoBehaviour {
                 case "Button":DoorToOpen.SetTrigger("Sesame");break;
                 case "Pressure":DoorToOpen.SetBool("Sesame", true);break;
                 case "Key":DoorToOpen.SetTrigger("Sesame");break;
+                case "Flame":DoorToOpen.SetBool("Flames", false);break;
                 default:Debug.Log("Dunno what type of door this is. Set a tag");break;
             }
 
