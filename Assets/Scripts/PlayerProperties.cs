@@ -11,8 +11,6 @@ public class PlayerProperties : MonoBehaviour {
 
     public int KeyCount = 0;
 
-    public Text display;
-
     public GameObject GunPowder;
 
     bool CloseToBody = false;
@@ -21,20 +19,31 @@ public class PlayerProperties : MonoBehaviour {
 
     GameObject body;
 
-    GameObject[] bodies;
+    GameObject[] bodyBag = new GameObject[10];
 
-    GameObject CheckCloseToBody()
+    List<int> CheckCloseToBody()
     {
-        foreach (GameObject body in bodies)
+        CloseToBody = false;
+        int pos = 0;
+        List<int> bodiesToRemove = new List<int>();
+        foreach (GameObject body in bodyBag)
         {
             if (Vector3.Distance(body.transform.position, gameObject.transform.position) < 2)
             {
                 CloseToBody = true;
-                return body;
+                bodiesToRemove.Add(pos);
             }
+            pos++;
         }
-        CloseToBody = false;
-        return gameObject;
+        return bodiesToRemove;
+    }
+
+    void bodiesToRemove(List<int> bodyPos)
+    {
+        for (int i = 0;i < bodyBag.Length;i++)
+        {
+
+        }
     }
 
     void Start () {
@@ -48,15 +57,28 @@ public class PlayerProperties : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (IsBodies)
-            body = CheckCloseToBody();
-        if (Vector3.Distance(GunPowder.transform.position, gameObject.transform.position) < 2)
-            display.text = "Press 'E' to eat GunPowder";
-        if (CloseToBody)
-            display.text = "Press 'E' to burn body";
+        if (Vector3.Distance(GunPowder.transform.position, gameObject.transform.position) < 3
+            && !GetComponent<PlayerController>().willExplode())
+        {
+            GetComponentInChildren<Text>().text = "Press 'E' to eat GunPowder";
+            GetComponent<PlayerController>().setEatEnabled(true);
+        }    
+        else
+        {
+            GetComponentInChildren<Text>().text = "";
+            GetComponent<PlayerController>().setEatEnabled(false);
+        }
 
         if (LifeSpan <= 0)
+        {
+            if(GetComponent<PlayerController>().willExplode())
+            {
+
+            }
+            GetComponent<Animator>().SetBool("Death", true);
             Destroy(gameObject);
+        }
+            
         LifeSpan -= Time.deltaTime;
 	}
 }

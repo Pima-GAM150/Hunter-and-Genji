@@ -7,7 +7,7 @@ public class ItemSpawn : MonoBehaviour {
     public PlayerCollection collection;
 
     public GameObject Key1;
-    Vector3 Key1Pos = new Vector3(2f,2f,0f);
+    Vector3 Key1Pos = new Vector3(-6.68f,0f,3.34f);
 
     //public GameObject Key2;
     //Repeat for every Key and powerUp there is

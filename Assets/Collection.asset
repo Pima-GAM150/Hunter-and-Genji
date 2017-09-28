@@ -13,8 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection:
     hasKey1: 1
-    hasKey2: 1
+    hasKey2: 0
+    hasKey3: 0
     usedKey1: 0
     usedKey2: 0
-    hasAcid: 0
+    usedKey3: 0
     hasSand: 0
+    hasSand2: 0

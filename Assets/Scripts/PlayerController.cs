@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     private Vector3 movement;
     private Vector3 lastPos;
     private bool burning = false;
+    private bool eatEnabled = false;
+    private bool explode = false;
     public Rigidbody player;
 
     void Start() {
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour {
         movement.x = Input.GetAxis("Horizontal");
         lastPos = movement;
         burning = false;
+        explode = false;
         GetComponentInChildren<ParticleSystem>().Stop();
     }
 
@@ -41,11 +44,26 @@ public class PlayerController : MonoBehaviour {
                 lastPos = movement;
             }
         }
+        if(eatEnabled)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                explode = true;
+            }
+        }
     }
 
     public void burn() {
         burning = true;
         GetComponent<Animator>().SetBool("Burning", true);
         GetComponentInChildren<ParticleSystem>().Play();
+    }
+
+    public bool willExplode() {
+        return explode;
+    }
+
+    public void setEatEnabled(bool i) {
+        eatEnabled = i;
     }
 }
