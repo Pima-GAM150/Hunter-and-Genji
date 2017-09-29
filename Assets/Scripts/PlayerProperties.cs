@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerProperties : MonoBehaviour {
 
+    public Transform corpse;
+    public Transform corpsebag;
+
     public Collection collection;
 
     float LifeSpan = 15.0f;
@@ -47,6 +50,7 @@ public class PlayerProperties : MonoBehaviour {
     }
 
     void Start () {
+        //Cam.transform.parent = gameObject.transform;//make the camera a child of this object
         if (collection.hasSand)
             LifeSpan += 5.0f;
         if (collection.hasKey1 && !collection.usedKey1)
@@ -73,9 +77,14 @@ public class PlayerProperties : MonoBehaviour {
         {
             if(GetComponent<PlayerController>().willExplode())
             {
-
+                //add explosion particles
             }
-            GetComponent<Animator>().SetBool("Death", true);
+            else {
+                Transform corpseBody = Instantiate<Transform>(corpse);
+                corpseBody.parent = corpsebag;
+                corpseBody.position = transform.position;
+            }
+
             Destroy(gameObject);
         }
             

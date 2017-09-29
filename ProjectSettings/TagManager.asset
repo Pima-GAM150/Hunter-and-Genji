@@ -8,6 +8,7 @@ TagManager:
   - Key
   - Button
   - Flame
+  - Body
   layers:
   - Default
   - TransparentFX
