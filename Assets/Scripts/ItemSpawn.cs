@@ -5,6 +5,9 @@ using UnityEngine;
 public class ItemSpawn : MonoBehaviour {
 
     public PlayerCollection collection;
+    public BodyBag bodyBag;
+
+    public GameObject body;
 
     public GameObject Key1;
     Vector3 Key1Pos = new Vector3(-6.68f,0f,3.34f);
@@ -18,8 +21,16 @@ public class ItemSpawn : MonoBehaviour {
     {
         if (!collection.collection.hasKey1)
         {
-            Instantiate(Key1, Key1Pos, new Quaternion());
+            Instantiate(Key1, Key1.transform);
+
         }//checks at launch if player has picked up the key, if they have it doesn't spawn it
+
+        if(bodyBag.bodyBag.Count > 0) {
+           /* foreach (Transform pos in bodyBag.bodyBag) {
+                Instantiate(body, pos);
+            }*/
+        }
+        
 
         //if(!collection.collection.usedKey1)
             //Instantiate(Door1,Door1Pos,new Quaternion())

@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerProperties : MonoBehaviour {
 
-    public Transform corpse;
-    public Transform corpsebag;
-
+    public Transform sceneBag;
+    public GameObject body;
+    public BodyBag bodyBag;
     public Collection collection;
 
-    float LifeSpan = 15.0f;
+    float LifeSpan = 5.0f;
 
     public int KeyCount = 0;
 
@@ -18,18 +18,12 @@ public class PlayerProperties : MonoBehaviour {
 
     bool CloseToBody = false;
 
-    bool IsBodies = false;
-
-    GameObject body;
-
-    GameObject[] bodyBag = new GameObject[10];
-
     List<int> CheckCloseToBody()
     {
         CloseToBody = false;
         int pos = 0;
         List<int> bodiesToRemove = new List<int>();
-        foreach (GameObject body in bodyBag)
+        foreach (Transform body in bodyBag.bodyBag)
         {
             if (Vector3.Distance(body.transform.position, gameObject.transform.position) < 2)
             {
@@ -43,9 +37,12 @@ public class PlayerProperties : MonoBehaviour {
 
     void bodiesToRemove(List<int> bodyPos)
     {
-        for (int i = 0;i < bodyBag.Length;i++)
+        for(int i = bodyBag.bodyBag.Count; i >= 0; i--)
         {
-
+            if(bodyPos[i] == i)
+            {
+                bodyBag.bodyBag.RemoveAt(i);
+            }
         }
     }
 
@@ -80,9 +77,13 @@ public class PlayerProperties : MonoBehaviour {
                 //add explosion particles
             }
             else {
-                Transform corpseBody = Instantiate<Transform>(corpse);
-                corpseBody.parent = corpsebag;
-                corpseBody.position = transform.position;
+                Transform corpseBody = Instantiate<Transform>(body.GetComponent<Transform>());//instantiate body prefab                
+                corpseBody.parent = sceneBag;//make it a child in the Scene BodyBog
+                corpseBody.position = new Vector3(transform.position.x, 0f, transform.position.z);//issues with the Y position, so zeroed it out. //move to player position
+                corpseBody.rotation = transform.rotation;//move to player rotation
+                
+                //bodyBag.bodyBag.Add(transform);//serialization of bodies
+                //bodyBag.bodyBag.Add(corpseBody);
             }
 
             Destroy(gameObject);

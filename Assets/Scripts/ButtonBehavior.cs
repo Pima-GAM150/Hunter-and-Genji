@@ -27,7 +27,8 @@ public class ButtonBehavior : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter(Collision e) {
+    //void OnCollisionEnter(Collision e) {
+    void OnTriggerEnter(Collider e) { 
         if (!switched) {//prolly no need to check this because there were no issues
             GetComponent<Animator>().SetBool("Reset", false);//make sure the animation will stop
             //Debug.Log("Squished");

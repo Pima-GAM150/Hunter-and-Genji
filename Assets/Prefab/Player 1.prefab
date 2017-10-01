@@ -4997,6 +4997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5f424ff7984fc4c9fd88641fb881eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  corpse: {fileID: 4211095396937362, guid: 862f9622cc5f40e4c969c990e3a0144e, type: 2}
+  corpsebag: {fileID: 0}
   collection:
     hasKey1: 0
     hasKey2: 0
@@ -9933,7 +9935,7 @@ ParticleSystem:
   playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
