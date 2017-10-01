@@ -12,16 +12,12 @@ public class PressureBehavior : MonoBehaviour {
     void Start () {
     }
 
-    void onTriggerEnter(Collision e) {
-        Debug.Log("Trigger");
-    }
-    void onCollisionEnter(Collider e) {
-        Debug.Log("enter"+e.tag);
+    void OnCollisionEnter(Collision e) {
+
     }
 
-    void onCollisionStay(Collider e) {
-        Debug.Log("stay"+e.tag);
-        if (!switched && e.tag == "Body") {
+    void OnCollisionStay(Collision e) {
+        if (!switched && e.collider.tag == "Body") {
             switched = true;
             switch (DoorToOpen.tag) {//door to open
                     case "Button": DoorToOpen.SetTrigger("Sesame"); break;
@@ -33,7 +29,7 @@ public class PressureBehavior : MonoBehaviour {
         }
     }
 
-    void onCollisionExit(Collider e) {
+    void OnCollisionExit(Collision e) {
         if (switched) {
             switched = false;
             switch (DoorToOpen.tag) {//door to close

@@ -79,7 +79,7 @@ public class PlayerProperties : MonoBehaviour {
             else {
                 Transform corpseBody = Instantiate<Transform>(body.GetComponent<Transform>());//instantiate body prefab                
                 corpseBody.parent = sceneBag;//make it a child in the Scene BodyBog
-                corpseBody.position = new Vector3(transform.position.x, 0f, transform.position.z);//issues with the Y position, so zeroed it out. //move to player position
+                corpseBody.position = new Vector3(transform.position.x, 1.4f, transform.position.z);//issues with the Y position, so zeroed it out. //move to player position
                 corpseBody.rotation = transform.rotation;//move to player rotation
                 
                 //bodyBag.bodyBag.Add(transform);//serialization of bodies
