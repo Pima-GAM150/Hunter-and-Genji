@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     private float speed = 7;
     private Vector3 movement;
     private Vector3 lastPos;
-    private bool burning = false;
+    public bool burning = false;
     private bool eatEnabled = false;
     private bool explode = false;
     public Rigidbody player;

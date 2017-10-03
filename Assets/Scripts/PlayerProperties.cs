@@ -10,7 +10,7 @@ public class PlayerProperties : MonoBehaviour {
     public BodyBag bodyBag;
     public PlayerCollection collection;
 
-    float LifeSpan = 10.0f;
+    public float LifeSpan = 10.0f;
     public int KeyCount = 0;
 
     public GameObject GunPowder;
@@ -45,6 +45,17 @@ public class PlayerProperties : MonoBehaviour {
         }
     }
 
+    void LeaveBody()
+    {
+        Transform corpseBody = Instantiate<Transform>(body.GetComponent<Transform>());//instantiate body prefab                
+        corpseBody.parent = sceneBag;//make it a child in the Scene BodyBog
+        corpseBody.position = new Vector3(transform.position.x, 1.4f, transform.position.z);//issues with the Y position, so zeroed it out. //move to player position
+        corpseBody.rotation = transform.rotation;//move to player rotation
+
+        bodyBag.bodyPos.Add(corpseBody.position);
+        bodyBag.bodyRot.Add(corpseBody.rotation);
+    }
+
     void Start () {
         //Cam.transform.parent = gameObject.transform;//make the camera a child of this object
         if (collection.hasSand)
@@ -76,15 +87,12 @@ public class PlayerProperties : MonoBehaviour {
                 List<int> bodiesToRemoveList = CheckCloseToBody();
                 bodiesToRemove(bodiesToRemoveList);
             }
+            else if(GetComponent<PlayerController>().burning)
+            {
+
+            }
             else {
-                Transform corpseBody = Instantiate<Transform>(body.GetComponent<Transform>());//instantiate body prefab                
-                corpseBody.parent = sceneBag;//make it a child in the Scene BodyBog
-                corpseBody.position = new Vector3(transform.position.x, 1.4f, transform.position.z);//issues with the Y position, so zeroed it out. //move to player position
-                corpseBody.rotation = transform.rotation;//move to player rotation
-
-                bodyBag.bodyPos.Add(corpseBody.position);
-                bodyBag.bodyRot.Add(corpseBody.rotation);
-
+                LeaveBody();
             }
             FindObjectOfType<SerializeToJson>().Save();
             Destroy(gameObject);
