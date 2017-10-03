@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547217d42855b094890075eee7fbb745, type: 3}
   m_Name: bodyBag
   m_EditorClassIdentifier: 
-  bodyBag: []
+  bodyPos: []
+  bodyRot: []

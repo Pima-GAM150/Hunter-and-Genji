@@ -8,28 +8,25 @@ public class PlayerProperties : MonoBehaviour {
     public Transform sceneBag;
     public GameObject body;
     public BodyBag bodyBag;
-    public Collection collection;
+    public PlayerCollection collection;
 
-    float LifeSpan = 5.0f;
-
+    float LifeSpan = 10.0f;
     public int KeyCount = 0;
 
     public GameObject GunPowder;
 
-    bool CloseToBody = false;
-
     List<int> CheckCloseToBody()
     {
-        CloseToBody = false;
         int pos = 0;
         List<int> bodiesToRemove = new List<int>();
-        foreach (Transform body in bodyBag.bodyBag)
+        foreach (Vector3 body in bodyBag.bodyPos)
         {
-            if (Vector3.Distance(body.transform.position, gameObject.transform.position) < 2)
+            if (Vector3.Distance(body, transform.position) < 7.5)
             {
-                CloseToBody = true;
                 bodiesToRemove.Add(pos);
             }
+            else
+                bodiesToRemove.Add(-1);
             pos++;
         }
         return bodiesToRemove;
@@ -37,11 +34,13 @@ public class PlayerProperties : MonoBehaviour {
 
     void bodiesToRemove(List<int> bodyPos)
     {
-        for(int i = bodyBag.bodyBag.Count; i >= 0; i--)
+        for(int i = bodyBag.bodyPos.Count - 1; i >= 0; i--)
         {
             if(bodyPos[i] == i)
             {
-                bodyBag.bodyBag.RemoveAt(i);
+                bodyBag.bodyPos.RemoveAt(i);
+                bodyBag.bodyRot.RemoveAt(i);
+                Destroy(sceneBag.GetChild(i).gameObject);
             }
         }
     }
@@ -58,7 +57,7 @@ public class PlayerProperties : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Vector3.Distance(GunPowder.transform.position, gameObject.transform.position) < 3
+        if (Vector3.Distance(GunPowder.transform.position, transform.position) < 3
             && !GetComponent<PlayerController>().willExplode())
         {
             GetComponentInChildren<Text>().text = "Press 'E' to eat GunPowder";
@@ -72,20 +71,22 @@ public class PlayerProperties : MonoBehaviour {
 
         if (LifeSpan <= 0)
         {
-            if(GetComponent<PlayerController>().willExplode())
+            if (GetComponent<PlayerController>().willExplode())
             {
-                //add explosion particles
+                List<int> bodiesToRemoveList = CheckCloseToBody();
+                bodiesToRemove(bodiesToRemoveList);
             }
             else {
                 Transform corpseBody = Instantiate<Transform>(body.GetComponent<Transform>());//instantiate body prefab                
                 corpseBody.parent = sceneBag;//make it a child in the Scene BodyBog
                 corpseBody.position = new Vector3(transform.position.x, 1.4f, transform.position.z);//issues with the Y position, so zeroed it out. //move to player position
                 corpseBody.rotation = transform.rotation;//move to player rotation
-                
-                //bodyBag.bodyBag.Add(transform);//serialization of bodies
-                //bodyBag.bodyBag.Add(corpseBody);
-            }
 
+                bodyBag.bodyPos.Add(corpseBody.position);
+                bodyBag.bodyRot.Add(corpseBody.rotation);
+
+            }
+            FindObjectOfType<SerializeToJson>().Save();
             Destroy(gameObject);
         }
             

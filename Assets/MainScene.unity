@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -177,13 +177,19 @@ Prefab:
         type: 2}
       propertyPath: bodyBag
       value: 
-      objectReference: {fileID: 11400000, guid: 160c25b5e3ab75b488453385fd26d039,
+      objectReference: {fileID: 11400000, guid: c58d0ad7b25fe2342952aa7019d63934,
         type: 2}
     - target: {fileID: 114139344039369194, guid: b90c439368a339845a7de49925e4005b,
         type: 2}
       propertyPath: sceneBag
       value: 
       objectReference: {fileID: 2024564899}
+    - target: {fileID: 114139344039369194, guid: b90c439368a339845a7de49925e4005b,
+        type: 2}
+      propertyPath: collection
+      value: 
+      objectReference: {fileID: 11400000, guid: 683b6be74859ca14eb48d9b11dadf065,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b90c439368a339845a7de49925e4005b, type: 2}
   m_IsPrefabParent: 0
@@ -354,11 +360,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 598870364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0373027cc42ea924b951e715c12f6e9a, type: 3}
+  m_Script: {fileID: 11500000, guid: c11c3a47c0769d849ba438b4619e04b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collection: {fileID: 11400000, guid: d31bc5401cebca845b51050ba9aa585b, type: 2}
-  player: {fileID: 1027616392}
+  collection: {fileID: 11400000, guid: 683b6be74859ca14eb48d9b11dadf065, type: 2}
+  bodyBag: {fileID: 11400000, guid: c58d0ad7b25fe2342952aa7019d63934, type: 2}
 --- !u!4 &598870366
 Transform:
   m_ObjectHideFlags: 0
@@ -613,12 +619,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1687916661276814, guid: b90c439368a339845a7de49925e4005b,
     type: 2}
   m_PrefabInternal: {fileID: 90020294}
---- !u!114 &1027616392 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114139344039369194, guid: b90c439368a339845a7de49925e4005b,
-    type: 2}
-  m_PrefabInternal: {fileID: 90020294}
-  m_Script: {fileID: 11500000, guid: bd5f424ff7984fc4c9fd88641fb881eb, type: 3}
 --- !u!1001 &1053951174
 Prefab:
   m_ObjectHideFlags: 0
@@ -839,20 +839,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1009,10 +995,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856968fdd6af4824abb9086135563140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collection: {fileID: 11400000, guid: d31bc5401cebca845b51050ba9aa585b, type: 2}
-  bodyBag: {fileID: 11400000, guid: 160c25b5e3ab75b488453385fd26d039, type: 2}
-  body: {fileID: 1529842839311980, guid: 862f9622cc5f40e4c969c990e3a0144e, type: 2}
-  Key1: {fileID: 1899971897575274, guid: f3e10ad7bab4d7e489c22de5017d5858, type: 2}
+  collection: {fileID: 11400000, guid: 683b6be74859ca14eb48d9b11dadf065, type: 2}
+  itemBodyBag: {fileID: 11400000, guid: c58d0ad7b25fe2342952aa7019d63934, type: 2}
+  sceneBag: {fileID: 2024564899}
+  body: {fileID: 1316206553976672, guid: 862f9622cc5f40e4c969c990e3a0144e, type: 2}
+  Key1: {fileID: 1458405780477684, guid: f3e10ad7bab4d7e489c22de5017d5858, type: 2}
 --- !u!1001 &2010099757
 Prefab:
   m_ObjectHideFlags: 0
@@ -1071,6 +1058,16 @@ Prefab:
         type: 2}
       propertyPath: VelocityModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65956317776657226, guid: 3ac182caee382134b81b83ba9a466fc1,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.6793308
+      objectReference: {fileID: 0}
+    - target: {fileID: 65956317776657226, guid: 3ac182caee382134b81b83ba9a466fc1,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 1.546916
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ac182caee382134b81b83ba9a466fc1, type: 2}

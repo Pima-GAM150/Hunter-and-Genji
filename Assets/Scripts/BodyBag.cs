@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 [CreateAssetMenu(fileName = "bodyBag", menuName = "bodyBag")]
 public class BodyBag : ScriptableObject
 {
-    public List<Transform> bodyBag = new List<Transform>();
+    public List<Vector3> bodyPos;
+    public List<Quaternion> bodyRot;
 }

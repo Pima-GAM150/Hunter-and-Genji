@@ -5,12 +5,13 @@ using UnityEngine;
 public class ItemSpawn : MonoBehaviour {
 
     public PlayerCollection collection;
-    public BodyBag bodyBag;
+    public BodyBag itemBodyBag;
+
+    public Transform sceneBag;
 
     public GameObject body;
 
     public GameObject Key1;
-    Vector3 Key1Pos = new Vector3(-6.68f,0f,3.34f);
 
     //public GameObject Key2;
     //Repeat for every Key and powerUp there is
@@ -19,16 +20,23 @@ public class ItemSpawn : MonoBehaviour {
 
     void Start()
     {
-        if (!collection.collection.hasKey1)
+        FindObjectOfType<SerializeToJson>().Load();
+        if (!collection.hasKey1)
         {
-            Instantiate(Key1, Key1.transform);
+            //Instantiate(Key1, new Vector3(0f,5f,0f),new Quaternion(0f,0f,0f,0f));
+            Instantiate(Key1, Key1.transform.position,Key1.transform.rotation);
 
         }//checks at launch if player has picked up the key, if they have it doesn't spawn it
 
-        if(bodyBag.bodyBag.Count > 0) {
-           /* foreach (Transform pos in bodyBag.bodyBag) {
-                Instantiate(body, pos);
-            }*/
+        if(itemBodyBag.bodyPos.Count > 0)
+        {
+            for (int i = 0; i < itemBodyBag.bodyPos.Count; i++)
+            {
+                Transform corpseBody = Instantiate<Transform>(body.GetComponent<Transform>());
+                corpseBody.parent = sceneBag;
+                corpseBody.position = itemBodyBag.bodyPos[i];
+                corpseBody.rotation = itemBodyBag.bodyRot[i];
+            }
         }
         
 
