@@ -10,7 +10,7 @@ public class PlayerProperties : MonoBehaviour {
     public BodyBag bodyBag;
     public PlayerCollection collection;
 
-    public float LifeSpan = 10.0f;
+    public float LifeSpan = 7.0f;
     public int KeyCount = 0;
 
     public GameObject GunPowder;

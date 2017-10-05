@@ -5,40 +5,48 @@ using UnityEngine;
 public class PressureBehavior : MonoBehaviour {
 
     public Animator DoorToOpen;
+    public Animator DoorToClose;
     public GameObject body;
     private bool switched = false;
 
     // Use this for initialization
     void Start () {
-    }
-
-    void OnCollisionEnter(Collision e) {
-
+        OpenSesame(DoorToClose);
     }
 
     void OnCollisionStay(Collision e) {
         if (!switched && e.collider.tag == "Body") {
             switched = true;
-            switch (DoorToOpen.tag) {//door to open
-                    case "Button": DoorToOpen.SetTrigger("Sesame"); break;
-                    case "Pressure": DoorToOpen.SetBool("Sesame", true); break;
-                    case "Key": DoorToOpen.SetTrigger("Sesame"); break;
-                    case "Flame": DoorToOpen.SetBool("Flames", false); break;
-                    default: Debug.Log("Dunno what type of door this is. Set a tag"); break;
-            }
+            OpenSesame(DoorToOpen);
+            Closesame(DoorToClose);
         }
     }
 
     void OnCollisionExit(Collision e) {
         if (switched) {
             switched = false;
-            switch (DoorToOpen.tag) {//door to close
-                case "Button": DoorToOpen.SetTrigger("Sesame"); break;
-                case "Pressure": DoorToOpen.SetBool("Sesame", false); break;
-                case "Key": DoorToOpen.SetTrigger("Sesame"); break;
-                case "Flame": DoorToOpen.SetBool("Flames", true); break;
-                default: Debug.Log("Dunno what type of door this is. Set a tag"); break;
-            }
+            Closesame(DoorToOpen);
+            OpenSesame(DoorToClose);
+        }
+    }
+
+    void OpenSesame(Animator Door) {
+        switch (Door.tag) {//door to open
+            case "Button": Door.SetTrigger("Sesame"); break;
+            case "Pressure": Door.SetBool("Sesame", true); break;
+            case "Key": Door.SetTrigger("Sesame"); break;
+            case "Flame": Door.SetBool("Flames", false); break;
+            default: Debug.Log("Dunno what type of door this is. Set a tag"); break;
+        }
+    }
+
+    void Closesame(Animator Door) {
+        switch (Door.tag) {//door to close
+            case "Button": Door.SetTrigger("Sesame"); break;
+            case "Pressure": Door.SetBool("Sesame", false); break;
+            case "Key": Door.SetTrigger("Sesame"); break;
+            case "Flame": Door.SetBool("Flames", true); break;
+            default: Debug.Log("Dunno what type of door this is. Set a tag"); break;
         }
     }
 
