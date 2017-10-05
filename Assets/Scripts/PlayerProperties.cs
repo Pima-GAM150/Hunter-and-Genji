@@ -9,8 +9,9 @@ public class PlayerProperties : MonoBehaviour {
     public GameObject body;
     public BodyBag bodyBag;
     public PlayerCollection collection;
+    public GameObject breakableWall;
 
-    public float LifeSpan = 7.0f;
+    public float LifeSpan = 10.0f;
     public int KeyCount = 0;
 
     public GameObject GunPowder;
@@ -86,6 +87,8 @@ public class PlayerProperties : MonoBehaviour {
             {
                 List<int> bodiesToRemoveList = CheckCloseToBody();
                 bodiesToRemove(bodiesToRemoveList);
+                if (breakableWall.GetComponent<BreakableWallBehavior>().CloseToWall())
+                    breakableWall.GetComponent<BreakableWallBehavior>().DestroyWall();
             }
             else if(GetComponent<PlayerController>().burning)
             {
