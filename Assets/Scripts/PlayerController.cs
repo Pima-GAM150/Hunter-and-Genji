@@ -93,7 +93,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     public bool willExplode() {
-        return explode;
+        if (explode && burning)
+            return true;
+        return false;
+        
     }
 
     public void setEatEnabled(bool i) {

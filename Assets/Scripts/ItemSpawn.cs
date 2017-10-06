@@ -6,9 +6,12 @@ public class ItemSpawn : MonoBehaviour {
 
     public PlayerCollection collection;
     public BodyBag itemBodyBag;
+    public Wall walls;
 
+    public Transform sceneWalls;
     public Transform sceneBag;
 
+    public GameObject wall;
     public GameObject body;
 
     public GameObject Key1;
@@ -69,6 +72,16 @@ public class ItemSpawn : MonoBehaviour {
                 corpseBody.parent = sceneBag;
                 corpseBody.position = itemBodyBag.bodyPos[i];
                 corpseBody.rotation = itemBodyBag.bodyRot[i];
+            }
+        }
+        if (walls.wallPos.Count > 0)
+        {
+            for (int i = 0; i < walls.wallPos.Count;i++)
+            {
+                Transform spawnWall = Instantiate<Transform>(wall.GetComponent<Transform>());
+                spawnWall.parent = sceneWalls;
+                spawnWall.position = walls.wallPos[i];
+                spawnWall.rotation = walls.wallRot[i];
             }
         }
         

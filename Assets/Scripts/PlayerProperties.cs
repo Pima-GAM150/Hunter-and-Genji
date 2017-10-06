@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class PlayerProperties : MonoBehaviour {
 
     public Transform sceneBag;
+    public Transform sceneWalls;
     public GameObject body;
     public BodyBag bodyBag;
     public PlayerCollection collection;
-    public GameObject breakableWall;
+    public Wall walls;
     public GameObject cam;
     public float LifeSpan = 10.0f;
     public int KeyCount = 0;
@@ -37,6 +38,23 @@ public class PlayerProperties : MonoBehaviour {
         return bodiesToRemove;
     }
 
+    List<int> CheckCloseToWall()
+    {
+        int pos = 0;
+        List<int> wallsToRemove = new List<int>();
+        foreach (Vector3 wall in walls.wallPos)
+        {
+            if (Vector3.Distance(wall, transform.position) < 5)
+            {
+                wallsToRemove.Add(pos);
+            }
+            else
+                wallsToRemove.Add(-1);
+            pos++;
+        }
+        return wallsToRemove;
+    }
+
     void bodiesToRemove(List<int> bodyPos)
     {
         for(int i = bodyBag.bodyPos.Count - 1; i >= 0; i--)
@@ -46,6 +64,19 @@ public class PlayerProperties : MonoBehaviour {
                 bodyBag.bodyPos.RemoveAt(i);
                 bodyBag.bodyRot.RemoveAt(i);
                 Destroy(sceneBag.GetChild(i).gameObject);
+            }
+        }
+    }
+
+    void WallsToRemove(List<int> bodyPos)
+    {
+        for (int i = walls.wallPos.Count - 1; i >= 0; i--)
+        {
+            if (bodyPos[i] == i)
+            {
+                walls.wallPos.RemoveAt(i);
+                walls.wallRot.RemoveAt(i);
+                Destroy(sceneWalls.GetChild(i).gameObject);
             }
         }
     }
@@ -111,8 +142,8 @@ public class PlayerProperties : MonoBehaviour {
             {
                 List<int> bodiesToRemoveList = CheckCloseToBody();
                 bodiesToRemove(bodiesToRemoveList);
-                if (breakableWall.GetComponent<BreakableWallBehavior>().CloseToWall())
-                    breakableWall.GetComponent<BreakableWallBehavior>().DestroyWall();
+                List<int> wallsToRemove = CheckCloseToWall();
+                WallsToRemove(wallsToRemove);
             }
             else if(GetComponent<PlayerController>().burning)
             {
