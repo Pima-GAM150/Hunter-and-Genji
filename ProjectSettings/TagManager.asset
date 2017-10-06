@@ -9,6 +9,7 @@ TagManager:
   - Button
   - Flame
   - Body
+  - Brick
   layers:
   - Default
   - TransparentFX

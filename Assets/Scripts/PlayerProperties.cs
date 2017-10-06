@@ -10,10 +10,14 @@ public class PlayerProperties : MonoBehaviour {
     public BodyBag bodyBag;
     public PlayerCollection collection;
     public GameObject breakableWall;
-
+    public GameObject cam;
     public float LifeSpan = 10.0f;
     public int KeyCount = 0;
-
+    public GameObject door1;
+    public GameObject door2;
+    public GameObject door3;
+    public GameObject door4;
+    public GameObject door5;
     public GameObject GunPowder;
 
     List<int> CheckCloseToBody()
@@ -61,11 +65,23 @@ public class PlayerProperties : MonoBehaviour {
         //Cam.transform.parent = gameObject.transform;//make the camera a child of this object
         if (collection.hasSand)
             LifeSpan += 5.0f;
-        if (collection.hasKey1 && !collection.usedKey1)
+        if (collection.hasKey1)
             KeyCount++;
-        if (collection.hasKey2 && !collection.usedKey2)
+        if (collection.hasKey2)
             KeyCount++;
-	}
+        if (collection.hasKey3)
+            KeyCount++;
+        if (collection.hasKey4)
+            KeyCount++;
+        if (collection.usedKey1)
+            KeyCount--;
+        if (collection.usedKey2)
+            KeyCount--;
+        if (collection.usedKey3)
+            KeyCount--;
+        if (collection.usedKey4)
+            KeyCount--;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -80,7 +96,15 @@ public class PlayerProperties : MonoBehaviour {
             GetComponentInChildren<Text>().text = "";
             GetComponent<PlayerController>().setEatEnabled(false);
         }
-
+        if (Vector3.Distance(transform.position, door1.transform.position) < 2 
+            && !collection.usedKey1) {
+            GetComponentInChildren<Text>().text = "Press E to open door";
+            GetComponent<PlayerController>().setDoorEnabled(true);
+        }
+        else {
+            GetComponentInChildren<Text>().text = "";
+            GetComponent<PlayerController>().setDoorEnabled(false);
+        }
         if (LifeSpan <= 0)
         {
             if (GetComponent<PlayerController>().willExplode())
@@ -98,6 +122,7 @@ public class PlayerProperties : MonoBehaviour {
                 LeaveBody();
             }
             FindObjectOfType<SerializeToJson>().Save();
+            cam.GetComponent<CamFollow>().activeCam = false;
             Destroy(gameObject);
         }
             

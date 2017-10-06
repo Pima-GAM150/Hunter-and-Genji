@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Name: Collection
   m_EditorClassIdentifier: 
   hasKey1: 1
-  hasKey2: 0
-  hasKey3: 0
-  usedKey1: 0
+  hasKey2: 1
+  hasKey3: 1
+  hasKey4: 1
+  hasKey5: 0
+  usedKey1: 1
   usedKey2: 0
   usedKey3: 0
+  usedKey4: 0
+  usedKey5: 0
   hasSand: 0
   hasSand2: 0
