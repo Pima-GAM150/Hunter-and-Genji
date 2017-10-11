@@ -1,10 +1,23 @@
 fileFormatVersion: 2
 guid: 856968fdd6af4824abb9086135563140
-timeCreated: 1505951258
+timeCreated: 1507573141
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - collection: {fileID: 11400000, guid: 683b6be74859ca14eb48d9b11dadf065, type: 2}
+  - itemBodyBag: {fileID: 11400000, guid: c58d0ad7b25fe2342952aa7019d63934, type: 2}
+  - sceneBag: {instanceID: 0}
+  - body: {instanceID: 0}
+  - Key1: {instanceID: 0}
+  - Key2: {instanceID: 0}
+  - Key3: {instanceID: 0}
+  - Key4: {instanceID: 0}
+  - door1: {instanceID: 0}
+  - door2: {instanceID: 0}
+  - door3: {instanceID: 0}
+  - door4: {instanceID: 0}
+  - door5: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

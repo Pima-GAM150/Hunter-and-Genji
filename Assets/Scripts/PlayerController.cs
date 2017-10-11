@@ -116,5 +116,6 @@ public class PlayerController : MonoBehaviour {
             GetComponentInChildren<ParticleSystem>().Clear();
         }
         player.transform.rotation = Quaternion.Euler(new Vector3(0, 180));     //.LookRotation(new Vector3(0.5f, 0, 0));
+
     }
 }
