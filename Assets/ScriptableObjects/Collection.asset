@@ -11,12 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0443d7da3c967a4c83fb4a5c1c20b71, type: 3}
   m_Name: Collection
   m_EditorClassIdentifier: 
-  hasKey1: 1
-  hasKey2: 1
-  hasKey3: 1
-  hasKey4: 1
+  hasKey1: 0
+  hasKey2: 0
+  hasKey3: 0
+  hasKey4: 0
   hasKey5: 0
-  usedKey1: 1
+  usedKey1: 0
   usedKey2: 0
   usedKey3: 0
   usedKey4: 0

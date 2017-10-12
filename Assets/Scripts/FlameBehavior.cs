@@ -8,6 +8,7 @@ public class FlameBehavior : MonoBehaviour {
 
     // Use this for initialization
     void OnCollisionEnter(Collision e) {
-        player.GetComponent<PlayerController>().burn();
+        if (e.gameObject.tag == "Player")
+            player.GetComponent<PlayerController>().burn();
     }
 }

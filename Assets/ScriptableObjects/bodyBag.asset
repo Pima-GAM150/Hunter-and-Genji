@@ -11,5 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547217d42855b094890075eee7fbb745, type: 3}
   m_Name: bodyBag
   m_EditorClassIdentifier: 
-  bodyPos: []
-  bodyRot: []
+  bodyPos:
+  - {x: -9.358984, y: 1.4, z: 0}
+  - {x: -11.463129, y: 1.4, z: 0}
+  - {x: -13.67278, y: 1.4, z: 0}
+  - {x: -15.86506, y: 1.4, z: 0}
+  bodyRot:
+  - {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  - {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  - {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  - {x: -0, y: -0.7071068, z: -0, w: 0.7071068}

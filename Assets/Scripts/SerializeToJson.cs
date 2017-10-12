@@ -28,16 +28,37 @@ public class SerializeToJson : MonoBehaviour
         {
             string myLoadedCollection = PlayerPrefs.GetString("save");
             SaveData loadedSave = JsonUtility.FromJson<SaveData>(myLoadedCollection);
-            for (int i = 0; i < loadedSave.bodyPos.Length; i++)
+            if (loadedSave.bodyPos.Length > 0)
             {
-                bodyBag.bodyPos[i] = loadedSave.bodyPos[i];
-                bodyBag.bodyRot[i] = loadedSave.bodyRot[i];
+                bodyBag.bodyPos.Clear();
+                bodyBag.bodyRot.Clear();
+                for (int i = 0; i < loadedSave.bodyPos.Length; i++)
+                {
+                    bodyBag.bodyPos.Add(loadedSave.bodyPos[i]);
+                    bodyBag.bodyRot.Add(loadedSave.bodyRot[i]);
+                }
             }
-            for (int i = 0; i < loadedSave.wallPos.Length; i++)
+            else
             {
-                walls.wallPos[i] = loadedSave.wallPos[i];
-                walls.wallRot[i] = loadedSave.wallRot[i];
+                bodyBag.bodyPos.Clear();
+                bodyBag.bodyRot.Clear();
             }
+            if (loadedSave.wallPos.Length > 0)
+            {
+                walls.wallPos.Clear();
+                walls.wallRot.Clear();
+                for (int i = 0; i < loadedSave.wallPos.Length; i++)
+                {
+                    walls.wallPos.Add(loadedSave.wallPos[i]);
+                    walls.wallRot.Add(loadedSave.wallRot[i]);
+                }
+            }
+            else
+            {
+                walls.wallPos.Clear();
+                walls.wallRot.Clear();
+            }
+            
             collection.hasKey1 = loadedSave.hasKey1;
             collection.hasKey2 = loadedSave.hasKey2;
             collection.hasKey3 = loadedSave.hasKey3;

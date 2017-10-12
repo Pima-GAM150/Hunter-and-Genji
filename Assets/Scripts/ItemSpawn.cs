@@ -25,6 +25,8 @@ public class ItemSpawn : MonoBehaviour {
     public GameObject door4;
     public GameObject door5;
 
+    public GameObject clock;
+
     //public GameObject Key2;
     //Repeat for every Key and powerUp there is
 
@@ -32,6 +34,8 @@ public class ItemSpawn : MonoBehaviour {
 
     void Start()
     {
+        //used for testing, also how we're going to reset the game if the player wants
+        //FindObjectOfType<SerializeToJson>().NewGame();
         FindObjectOfType<SerializeToJson>().Load();
         if (!collection.hasKey1)
         {
@@ -63,6 +67,9 @@ public class ItemSpawn : MonoBehaviour {
         if (collection.usedKey5) {
             door5.GetComponent<Door5>().OpenDoor();
         }
+        if (!collection.hasSand) {
+            Instantiate(clock, clock.transform.position, clock.transform.rotation);
+        }
 
         if (itemBodyBag.bodyPos.Count > 0)
         {
@@ -74,6 +81,7 @@ public class ItemSpawn : MonoBehaviour {
                 corpseBody.rotation = itemBodyBag.bodyRot[i];
             }
         }
+
         if (walls.wallPos.Count > 0)
         {
             for (int i = 0; i < walls.wallPos.Count;i++)

@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour {
     private Vector3 movement;
     private Vector3 lastPos;
     public bool burning = false;
-    private bool eatEnabled = false;
-    private bool explode = false;
+    public bool eatEnabled = false;
+    public bool explode = false;
     private bool doorEnabled = false;
     public Rigidbody player;
     public GameObject door1;
@@ -63,22 +63,27 @@ public class PlayerController : MonoBehaviour {
                     if (!collection.usedKey1) {
                         collection.usedKey1 = true;
                         door1.GetComponent<Door1>().OpenDoor();
+                        GetComponent<PlayerProperties>().KeyCount--;
                     }
-                    if (!collection.usedKey2) {
+                    else if (!collection.usedKey2) {
                         collection.usedKey2 = true;
                         door2.GetComponent<Door2>().OpenDoor();
+                        GetComponent<PlayerProperties>().KeyCount--;
                     }
-                    if (!collection.usedKey3) {
+                    else if (!collection.usedKey3) {
                         collection.usedKey3 = true;
                         door3.GetComponent<Door3>().OpenDoor();
+                        GetComponent<PlayerProperties>().KeyCount--;
                     }
-                    if (!collection.usedKey4) {
+                    else if (!collection.usedKey4) {
                         collection.usedKey4 = true;
                         door4.GetComponent<Door4>().OpenDoor();
+                        GetComponent<PlayerProperties>().KeyCount--;
                     }
-                    if (!collection.usedKey5) {
+                    else if (!collection.usedKey5) {
                         collection.usedKey5 = true;
                         door5.GetComponent<Door5>().OpenDoor();
+                        GetComponent<PlayerProperties>().KeyCount--;
                     }
                 }
             }
@@ -116,6 +121,5 @@ public class PlayerController : MonoBehaviour {
             GetComponentInChildren<ParticleSystem>().Clear();
         }
         player.transform.rotation = Quaternion.Euler(new Vector3(0, 180));     //.LookRotation(new Vector3(0.5f, 0, 0));
-
     }
 }
