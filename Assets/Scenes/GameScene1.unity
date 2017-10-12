@@ -7163,6 +7163,16 @@ Prefab:
       propertyPath: Timer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114439463869356002, guid: 12eeacdb3ee5f5843aefb01cadbd5600,
+        type: 2}
+      propertyPath: buttons
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a7ac37fdf5ec754cb2b736fa0647366,
+        type: 2}
+    - target: {fileID: 1105245919119158, guid: 12eeacdb3ee5f5843aefb01cadbd5600, type: 2}
+      propertyPath: m_TagString
+      value: Button1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12eeacdb3ee5f5843aefb01cadbd5600, type: 2}
   m_IsPrefabParent: 0
@@ -8440,6 +8450,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 360618162}
   collection: {fileID: 11400000, guid: 683b6be74859ca14eb48d9b11dadf065, type: 2}
+--- !u!1 &440379511 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1417586302651466, guid: 12eeacdb3ee5f5843aefb01cadbd5600,
+    type: 2}
+  m_PrefabInternal: {fileID: 126596298}
 --- !u!1 &447828401
 GameObject:
   m_ObjectHideFlags: 0
@@ -12877,6 +12892,7 @@ MonoBehaviour:
   collection: {fileID: 11400000, guid: 683b6be74859ca14eb48d9b11dadf065, type: 2}
   bodyBag: {fileID: 11400000, guid: c58d0ad7b25fe2342952aa7019d63934, type: 2}
   walls: {fileID: 11400000, guid: 3e016da5d77ab984bb0055ae5728b166, type: 2}
+  buttons: {fileID: 11400000, guid: 1a7ac37fdf5ec754cb2b736fa0647366, type: 2}
 --- !u!4 &598870366
 Transform:
   m_ObjectHideFlags: 0
@@ -13450,6 +13466,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e94e1956bda49d14582e8a1bc86e10cc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &710767118 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1111810849320696, guid: ff27ef4371a55f84fbc34b6a9e0825fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1026181780}
 --- !u!1 &720201596
 GameObject:
   m_ObjectHideFlags: 0
@@ -22062,6 +22083,16 @@ Prefab:
       propertyPath: Timer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114166547887468048, guid: ff27ef4371a55f84fbc34b6a9e0825fd,
+        type: 2}
+      propertyPath: buttons
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a7ac37fdf5ec754cb2b736fa0647366,
+        type: 2}
+    - target: {fileID: 1615116836841678, guid: ff27ef4371a55f84fbc34b6a9e0825fd, type: 2}
+      propertyPath: m_TagString
+      value: Button2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff27ef4371a55f84fbc34b6a9e0825fd, type: 2}
   m_IsPrefabParent: 0
@@ -22176,6 +22207,7 @@ MonoBehaviour:
   bodyBag: {fileID: 11400000, guid: c58d0ad7b25fe2342952aa7019d63934, type: 2}
   collection: {fileID: 11400000, guid: 683b6be74859ca14eb48d9b11dadf065, type: 2}
   walls: {fileID: 11400000, guid: 3e016da5d77ab984bb0055ae5728b166, type: 2}
+  buttons: {fileID: 11400000, guid: 1a7ac37fdf5ec754cb2b736fa0647366, type: 2}
   cam: {fileID: 518363656}
   LifeSpan: 6
   KeyCount: 0
@@ -22185,6 +22217,8 @@ MonoBehaviour:
   door4: {fileID: 433096788}
   door5: {fileID: 1132747770}
   GunPowder: {fileID: 833504691}
+  button1: {fileID: 440379511}
+  button2: {fileID: 710767118}
 --- !u!65 &1027616393
 BoxCollider:
   m_ObjectHideFlags: 0

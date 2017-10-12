@@ -11,6 +11,7 @@ public class PlayerProperties : MonoBehaviour {
     public BodyBag bodyBag;
     public PlayerCollection collection;
     public Wall walls;
+    public Timers buttons;
     public GameObject cam;
     public float LifeSpan = 10.0f;
     public int KeyCount = 0;
@@ -20,6 +21,8 @@ public class PlayerProperties : MonoBehaviour {
     public GameObject door4;
     public GameObject door5;
     public Transform GunPowder;
+    public GameObject button1;
+    public GameObject button2;
 
     private bool oneTimeGunPowder = true;
     private bool oneTimeDoor1 = true;
@@ -207,6 +210,15 @@ public class PlayerProperties : MonoBehaviour {
 
         if (LifeSpan <= 0)
         {
+            if (button1.GetComponentInChildren<ButtonBehavior>().Timer != 9)
+                buttons.button1 = button1.GetComponentInChildren<ButtonBehavior>().Timer;
+            else
+                buttons.button1 = 0;
+            if (button2.GetComponentInChildren<ButtonBehavior>().Timer != 14)
+                buttons.button2 = button2.GetComponentInChildren<ButtonBehavior>().Timer;
+            else
+                buttons.button2 = 0;
+
             if (GetComponent<PlayerController>().willExplode())
             {
                 List<int> bodiesToRemoveList = CheckCloseToBody();

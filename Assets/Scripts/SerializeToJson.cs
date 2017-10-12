@@ -7,6 +7,7 @@ public class SerializeToJson : MonoBehaviour
     public PlayerCollection collection;
     public BodyBag bodyBag;
     public Wall walls;
+    public Timers buttons;
 
     public void Save()
     {
@@ -15,7 +16,7 @@ public class SerializeToJson : MonoBehaviour
                                       usedKey2 = collection.usedKey2,usedKey3 = collection.usedKey3,usedKey4 = collection.usedKey4,
                                       usedKey5 = collection.usedKey5, hasSand = collection.hasSand,hasSand2 = collection.hasSand2,
                                       bodyPos = bodyBag.bodyPos.ToArray(),bodyRot = bodyBag.bodyRot.ToArray(),
-                                      wallPos = walls.wallPos.ToArray(),wallRot = walls.wallRot.ToArray()};
+                                      wallPos = walls.wallPos.ToArray(),wallRot = walls.wallRot.ToArray(),button1 = buttons.button1, button2 = buttons.button2};
         string mySavedCollection = JsonUtility.ToJson(save);      
 
         PlayerPrefs.SetString("save", mySavedCollection);
@@ -71,6 +72,8 @@ public class SerializeToJson : MonoBehaviour
             collection.usedKey5 = loadedSave.usedKey5;
             collection.hasSand = loadedSave.hasSand;
             collection.hasSand2 = loadedSave.hasSand2;
+            buttons.button1 = loadedSave.button1;
+            buttons.button2 = loadedSave.button2;
         }
     }
 
@@ -103,4 +106,7 @@ public class SaveData
 
     public Vector3[] wallPos = new Vector3[] {new Vector3(18,0,5),new Vector3(18,0,8),new Vector3(18,0,11)};
     public Quaternion[] wallRot = new Quaternion[] { new Quaternion(0,0,0,0), new Quaternion(0, 0, 0, 0), new Quaternion(0, 0, 0, 0) };
+
+    public float button1 = 0;
+    public float button2 = 0;
 }
