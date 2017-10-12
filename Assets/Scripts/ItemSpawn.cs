@@ -18,6 +18,7 @@ public class ItemSpawn : MonoBehaviour {
     public GameObject Key2;
     public GameObject Key3;
     public GameObject Key4;
+    public GameObject Key5;
 
     public GameObject door1;
     public GameObject door2;
@@ -51,6 +52,9 @@ public class ItemSpawn : MonoBehaviour {
         }
         if (!collection.hasKey4) {
             Instantiate(Key4, Key4.transform.position, Key4.transform.rotation);
+        }
+        if (!collection.hasKey5) {
+            Instantiate(Key5, Key5.transform.position, Key5.transform.rotation);
         }
         if (collection.usedKey1) {
             door1.GetComponent<Door1>().OpenDoor();

@@ -9,6 +9,7 @@ public class Key2 : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             collection.hasKey2 = true;
+            FindObjectOfType<PlayerProperties>().getKeyCount();
             Destroy(gameObject);
         }
     }//Modifies the collection object and deletes the key

@@ -126,6 +126,11 @@ public class PlayerProperties : MonoBehaviour {
             KeyCount--;
         if (collection.usedKey5)
             KeyCount--;
+        getKeyCount();
+    }
+
+    public void getKeyCount() {
+        GetComponentInChildren<Text2>().setText("Key Count: " + KeyCount);
     }
 	
 	void Update () {
@@ -133,77 +138,77 @@ public class PlayerProperties : MonoBehaviour {
             && !GetComponent<PlayerController>().explode)
         {
             oneTimeGunPowder = false;
-            GetComponentInChildren<Text>().text = "Press 'E' to eat GunPowder";
+            GetComponentInChildren<Text1>().setText("Press 'E' to eat GunPowder");
             GetComponent<PlayerController>().setEatEnabled(true);
         }    
         else if(!oneTimeGunPowder)
         {
             oneTimeGunPowder = true;
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<Text1>().setText("");
             GetComponent<PlayerController>().setEatEnabled(false);
         }
 
         if (Vector3.Distance(transform.position, door1.transform.position) < 2 
             && !collection.usedKey1 && KeyCount > 0) {
             oneTimeDoor1 = false;
-            GetComponentInChildren<Text>().text = "Press E to open door";
+            GetComponentInChildren<Text1>().setText("Press E to open door");
             GetComponent<PlayerController>().setDoorEnabled(true);
         }
         else if(!oneTimeDoor1){
             oneTimeDoor1 = true;
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<Text1>().setText("");
             GetComponent<PlayerController>().setDoorEnabled(false);
         }
         if (Vector3.Distance(transform.position, door2.transform.position) < 2
             && !collection.usedKey2 && KeyCount > 0)
         {
             oneTimeDoor2 = false;
-            GetComponentInChildren<Text>().text = "Press E to open door";
+            GetComponentInChildren<Text1>().setText("Press E to open door");
             GetComponent<PlayerController>().setDoorEnabled(true);
         }
         else if (!oneTimeDoor2)
         {
             oneTimeDoor2 = true;
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<Text1>().setText("");
             GetComponent<PlayerController>().setDoorEnabled(false);
         }
         if (Vector3.Distance(transform.position, door3.transform.position) < 2
             && !collection.usedKey3 && KeyCount > 0)
         {
             oneTimeDoor3 = false;
-            GetComponentInChildren<Text>().text = "Press E to open door";
+            GetComponentInChildren<Text1>().setText("Press E to open door");
             GetComponent<PlayerController>().setDoorEnabled(true);
         }
         else if (!oneTimeDoor3)
         {
             oneTimeDoor3 = true;
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<Text1>().setText("");
             GetComponent<PlayerController>().setDoorEnabled(false);
         }
         if (Vector3.Distance(transform.position, door4.transform.position) < 2
             && !collection.usedKey4 && KeyCount > 0)
         {
             oneTimeDoor4 = false;
-            GetComponentInChildren<Text>().text = "Press E to open door";
+            GetComponentInChildren<Text1>().setText("Press E to open door");
             GetComponent<PlayerController>().setDoorEnabled(true);
         }
         else if (!oneTimeDoor4)
         {
             oneTimeDoor4 = true;
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<Text1>().setText("");
             GetComponent<PlayerController>().setDoorEnabled(false);
         }
         if (Vector3.Distance(transform.position, door5.transform.position) < 2
             && !collection.usedKey5 && KeyCount > 0)
         {
             oneTimeDoor5 = false;
-            GetComponentInChildren<Text>().text = "Press E to open door";
+            GetComponentInChildren<Text1>().setText("Press E to open door");
             GetComponent<PlayerController>().setDoorEnabled(true);
         }
         else if (!oneTimeDoor5)
         {
             oneTimeDoor5 = true;
-            GetComponentInChildren<Text>().text = "";
+            GetComponentInChildren<Text1>().setText("");
             GetComponent<PlayerController>().setDoorEnabled(false);
         }
 

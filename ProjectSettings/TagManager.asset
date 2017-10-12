@@ -13,6 +13,9 @@ TagManager:
   - Explode
   - Button1
   - Button2
+  - PlayerText
+  - KeyCount
+  - LifeSpan
   layers:
   - Default
   - TransparentFX

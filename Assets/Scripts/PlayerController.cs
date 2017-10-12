@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour {
                         door5.GetComponent<Door5>().OpenDoor();
                         GetComponent<PlayerProperties>().KeyCount--;
                     }
+                    GetComponentInChildren<Text2>().setText("Key Count: " + GetComponent<PlayerProperties>().KeyCount);
                 }
             }
         }

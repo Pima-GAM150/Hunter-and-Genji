@@ -10,6 +10,7 @@ public class Key1 : MonoBehaviour {
     {
         if (other.tag == "Player") {
             collection.hasKey1 = true;
+            FindObjectOfType<PlayerProperties>().getKeyCount();
             Destroy(gameObject);
         }   
     }//Modifies the collection object and deletes the key

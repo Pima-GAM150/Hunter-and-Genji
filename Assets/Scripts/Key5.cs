@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key4 : MonoBehaviour {
+public class Key5 : MonoBehaviour
+{
 
     public PlayerCollection collection;
 
-    void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
-            collection.hasKey4 = true;
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            collection.hasKey5 = true;
             FindObjectOfType<PlayerProperties>().getKeyCount();
             Destroy(gameObject);
         }
