@@ -23,6 +23,7 @@ public class PlayerProperties : MonoBehaviour {
     public Transform GunPowder;
     public GameObject button1;
     public GameObject button2;
+    public GameObject Explode;
 
     private bool oneTimeGunPowder = true;
     private bool oneTimeDoor1 = true;
@@ -103,7 +104,6 @@ public class PlayerProperties : MonoBehaviour {
     }
 
     void Start () {
-        //Cam.transform.parent = gameObject.transform;//make the camera a child of this object
         if (collection.hasSand)
             LifeSpan += 5.0f;
         if (collection.hasKey1)
@@ -128,7 +128,6 @@ public class PlayerProperties : MonoBehaviour {
             KeyCount--;
     }
 	
-	// Update is called once per frame
 	void Update () {
         if (Vector3.Distance(transform.position, GunPowder.position) < 3
             && !GetComponent<PlayerController>().explode)
@@ -221,6 +220,12 @@ public class PlayerProperties : MonoBehaviour {
 
             if (GetComponent<PlayerController>().willExplode())
             {
+                //particle explosion
+                Explode.SetActive(true);
+                Explode.transform.position = new Vector3(transform.position.x, 1.4f, transform.position.z);
+                Explode.GetComponent<ParticleSystem>().Play();
+                //end explode
+
                 List<int> bodiesToRemoveList = CheckCloseToBody();
                 bodiesToRemove(bodiesToRemoveList);
                 List<int> wallsToRemove = CheckCloseToWall();

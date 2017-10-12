@@ -68,4 +68,10 @@ public class ButtonBehavior : MonoBehaviour {
             }
         }
     }
+
+    public void Serialized(int timer) {
+        switched = false;
+        Timer = timer;
+        OnTriggerEnter(null);
+    }
 }

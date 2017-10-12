@@ -71,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4638098285257592}
   - component: {fileID: 198136227976789802}
-  - component: {fileID: 114182127849094984}
   - component: {fileID: 199779773348081968}
   m_Layer: 0
   m_Name: PlasmaExplosionEffect
@@ -166,17 +165,6 @@ Transform:
   m_Father: {fileID: 4638098285257592}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114182127849094984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413447790314650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198053295296937412
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3506,7 +3494,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1377673852
+  randomSeed: -935553484
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6683,7 +6671,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2066933243
+  randomSeed: -107094884
   InitialModule:
     serializedVersion: 3
     enabled: 1

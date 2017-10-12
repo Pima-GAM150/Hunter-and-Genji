@@ -5,24 +5,32 @@ using UnityEngine;
 public class TrapDoorBehavior : MonoBehaviour {
 
     public GameObject player;
-    float delay = 1.0f;
+    bool trigger;//check if touched
+    float delay = 0.5f;//time till block falls
+    private Animator anim;
 
-	void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-            delay = 1.0f;
+    void Start() {
+        anim = this.GetComponent<Animator>();
+    }
+
+	void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player") trigger = true; 
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (delay <= 0.0)
+        if (other.tag == "Player" && delay <= 0f)//this continued to run on a body, have to check if player
         {
-            player.GetComponent<PlayerProperties>().LifeSpan = 0;
+            player.GetComponent<PlayerProperties>().LifeSpan = 0;//kills player if standing on falling tile
         }
     }
 
-	// Update is called once per frame
-	void Update () {
-        delay -= Time.deltaTime;
+    void Drop() {//runs animation
+        anim.SetTrigger("Fallout");
+    }
+
+	void Update () {//decriment time only when triggered
+        if (trigger)delay -= Time.deltaTime;
+        if (delay <= 0f) Drop();
 	}
 }
