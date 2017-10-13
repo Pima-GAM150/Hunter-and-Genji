@@ -104,8 +104,8 @@ public class SaveData
     public Vector3[] bodyPos;
     public Quaternion[] bodyRot;
 
-    public Vector3[] wallPos = new Vector3[] {new Vector3(18,0,5),new Vector3(18,0,8),new Vector3(18,0,11)};
-    public Quaternion[] wallRot = new Quaternion[] { new Quaternion(0,0,0,0), new Quaternion(0, 0, 0, 0), new Quaternion(0, 0, 0, 0) };
+    public Vector3[] wallPos = new Vector3[] {new Vector3(18,0,5),new Vector3(18,0,8),new Vector3(18,0,11), new Vector3(12, 0, -11), new Vector3(12, 0, -14) };
+    public Quaternion[] wallRot = new Quaternion[] { new Quaternion(0,0,0,0), new Quaternion(0, 0, 0, 0), new Quaternion(0, 0, 0, 0), new Quaternion(0, 0, 0, 0), new Quaternion(0, 0, 0, 0) };
 
     public float button1 = 0;
     public float button2 = 0;

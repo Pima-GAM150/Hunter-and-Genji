@@ -33,10 +33,13 @@ public class ItemSpawn : MonoBehaviour {
 
     //public GameObject Door1
 
+    public void ResetAll() {
+        //used for testing, also how we're going to reset the game if the player wants
+        FindObjectOfType<SerializeToJson>().NewGame();
+    }
+
     void Start()
     {
-        //used for testing, also how we're going to reset the game if the player wants
-        //FindObjectOfType<SerializeToJson>().NewGame();
         FindObjectOfType<SerializeToJson>().Load();
         if (!collection.hasKey1)
         {

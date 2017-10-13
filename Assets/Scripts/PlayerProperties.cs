@@ -24,6 +24,7 @@ public class PlayerProperties : MonoBehaviour {
     public GameObject button1;
     public GameObject button2;
     public GameObject Explode;
+    public GameObject Respawn;
 
     private bool oneTimeGunPowder = true;
     private bool oneTimeDoor1 = true;
@@ -135,7 +136,7 @@ public class PlayerProperties : MonoBehaviour {
 	
 	void Update () {
         if (Vector3.Distance(transform.position, GunPowder.position) < 3
-            && !GetComponent<PlayerController>().explode)
+            && !GetComponent<PlayerController>().explode)// && !GetComponent<PlayerController>().burning)
         {
             oneTimeGunPowder = false;
             GetComponentInChildren<Text1>().setText("Press 'E' to eat GunPowder");
@@ -246,6 +247,8 @@ public class PlayerProperties : MonoBehaviour {
             FindObjectOfType<SerializeToJson>().Save();
             cam.GetComponent<CamFollow>().activeCam = false;
             Destroy(gameObject);
+            //spawn restart button
+            Respawn.SetActive(true);
         }
             
         LifeSpan -= Time.deltaTime;
